@@ -13,6 +13,7 @@
         android:layout_height="50dp">
 
         <TextView
+            android:id="@+id/tv_year"
             android:gravity="center"
             android:textSize="17sp"
             android:paddingRight="22dp"
@@ -36,7 +37,7 @@
             android:layout_height="match_parent"/>
     </LinearLayout>
 
-    <com.cretin.www.calendarviewdemo.CustomViewPager
+    <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="350dp" />

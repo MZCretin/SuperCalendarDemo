@@ -1,14 +1,12 @@
 package com.cretin.www.calendarviewdemo;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
+import android.graphics.Color;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.LinearLayout;
 
 import com.cretin.www.calendarviewdemo.views.CalendarView;
 
@@ -24,7 +22,7 @@ public class CalendarPagerAdapter extends PagerAdapter {
 
     private int count;
 
-    public CalendarPagerAdapter(int count,Context context) {
+    public CalendarPagerAdapter(int count, Context context) {
         this.count = count;
         this.context = context;
     }
@@ -44,17 +42,55 @@ public class CalendarPagerAdapter extends PagerAdapter {
         final CalendarView view;
         if (!cache.isEmpty()) {
             view = cache.removeFirst();
-            view.setData(2018,position+1);
+            int[] yearAndMonth = getYearAndMonth(position);
+            view.setData(yearAndMonth[0], yearAndMonth[1]);
+            Log.e("HHHHHHH", "gangal   " + view.getChildCount() + "   " + view.getHeight());
         } else {
             view = new CalendarView(container.getContext());
             view.setBackgroundResource(R.drawable.bg);
-            view.setInitData(2018,position+1);
+            int[] yearAndMonth = getYearAndMonth(position);
+            view.setInitData(yearAndMonth[0], yearAndMonth[1]);
+            Log.e("HHHHHHH", "gangal1   " + view.getChildCount() + "   " + view.getHeight());
         }
         mViews.put(position, view);
         container.addView(view);
         return view;
     }
 
+    int startYear = 2014;
+    int startMonth = 5;
+    int afterMonth = 36;
+
+    public int[] getYearAndMonth(int position) {
+        int cMonth = startMonth + position;
+        int cYear = startYear + cMonth / 12;
+
+        if (cMonth % 12 == 1) {
+            //增加一年
+            cMonth = 1;
+        } else if (cMonth % 12 == 0) {
+            //正好12月
+            cMonth = 12;
+            cYear--;
+        } else {
+            cMonth = cMonth % 12;
+        }
+        return new int[]{cYear, cMonth};
+    }
+
+    public int getPosition(int[] yearAndMonth) {
+        int year = yearAndMonth[0];
+        int month = yearAndMonth[1];
+        //计算需要展示的所有月数
+        if (year == startYear) {
+            if (month > startMonth) {
+                return month - startMonth;
+            } else {
+                return 0;
+            }
+        }
+        return (year - startYear - 1) * 12 + (12 - startMonth) + month;
+    }
 
 
     @Override
