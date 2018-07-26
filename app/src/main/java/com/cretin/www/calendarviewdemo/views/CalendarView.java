@@ -237,27 +237,29 @@ public class CalendarView extends LinearLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        if (mPanelWidth == 0) {
+            int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+            int widthMode = MeasureSpec.getMode(widthMeasureSpec);
 
-        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+            int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+            int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 
-        int width = Math.min(widthSize, heightSize);
-        if (widthMode == MeasureSpec.UNSPECIFIED) {
-            width = heightSize;
-        } else if (heightMode == MeasureSpec.UNSPECIFIED) {
-            width = widthSize;
+            int width = Math.min(widthSize, heightSize);
+            if (widthMode == MeasureSpec.UNSPECIFIED) {
+                width = heightSize;
+            } else if (heightMode == MeasureSpec.UNSPECIFIED) {
+                width = widthSize;
+            }
+            mPanelWidth = width;
+
+            initHeadView(mContext);
+
+            initBodyView(mContext);
+
+            putData();
+        } else {
+            Log.e("HHH", "kepa");
         }
-        mPanelWidth = width;
-
-        removeAllViews();
-
-        initHeadView(mContext);
-
-        initBodyView(mContext);
-
-        putData();
     }
 
 

@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         adapter = new CalendarPagerAdapter(months[3], this);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(months[3] - months[2]);
-        viewPager.setOffscreenPageLimit(5);
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -114,6 +113,16 @@ public class MainActivity extends AppCompatActivity {
 
                 currPosotion = months[3] - months[2];
                 recyclerview.setAdapter(adapterRecycler);
+
+                int top = 0;
+                int pisition = linearLayoutManager.findFirstVisibleItemPosition();
+                View viewByPosition = linearLayoutManager.findViewByPosition(pisition);
+                if (viewByPosition != null)
+                    top = viewByPosition.getLeft();
+                float itemViewHeight = recyclerViewWidth / 5;
+                int needScrollPostion = currPosotion - pisition - 2;
+                int distance = (int) (needScrollPostion * itemViewHeight + (itemViewHeight - Math.abs(top)));
+                recyclerview.smoothScrollBy(distance, 0);
             }
         });
     }

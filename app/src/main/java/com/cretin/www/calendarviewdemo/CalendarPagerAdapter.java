@@ -1,6 +1,7 @@
 package com.cretin.www.calendarviewdemo;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.util.SparseArray;
@@ -43,13 +44,13 @@ public class CalendarPagerAdapter extends PagerAdapter {
             view = cache.removeFirst();
             int[] yearAndMonth = getYearAndMonth(position);
             view.setData(yearAndMonth[0], yearAndMonth[1]);
-            Log.e("HHHHHHH", "gangal");
+            Log.e("HHHHHHH", "gangal   " + view.getChildCount() + "   " + view.getHeight());
         } else {
             view = new CalendarView(container.getContext());
             view.setBackgroundResource(R.drawable.bg);
             int[] yearAndMonth = getYearAndMonth(position);
             view.setInitData(yearAndMonth[0], yearAndMonth[1]);
-            Log.e("HHHHHHH", "gangal1");
+            Log.e("HHHHHHH", "gangal1   " + view.getChildCount() + "   " + view.getHeight());
         }
         mViews.put(position, view);
         container.addView(view);
