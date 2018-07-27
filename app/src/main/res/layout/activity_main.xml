@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/main"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context="com.cretin.www.calendarviewdemo.MainActivity">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_year"
-            android:gravity="center"
-            android:textSize="17sp"
-            android:paddingRight="22dp"
-            android:paddingLeft="22dp"
-            android:textColor="#7EC059"
-            android:text="2018"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="22dp"
+            android:paddingRight="22dp"
+            android:text="2018"
+            android:textColor="#7EC059"
+            android:textSize="17sp" />
+
         <View
-            android:layout_gravity="center"
-            android:background="#E3E3E3"
             android:layout_width="1dp"
-            android:layout_height="15dp"/>
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:background="#E3E3E3" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview"
-            android:overScrollMode="never"
-            android:scrollbars="none"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="350dp" />
+        android:layout_height="350dp"
+        android:background="@drawable/bg" />
 
 </LinearLayout>
