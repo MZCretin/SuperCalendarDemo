@@ -31,6 +31,8 @@ public class CalendarView extends LinearLayout implements View.OnClickListener {
     private int mWeekColor = Color.parseColor("#AEEC8B");
     private int mDaysColor = Color.parseColor("#1d1d26");
 
+    private boolean isFirst = true;
+
     private OnItemClickListener listener;
 
     private int defaultWidth = 100;
@@ -121,6 +123,12 @@ public class CalendarView extends LinearLayout implements View.OnClickListener {
                             //设置今日时间颜色
                             if (currYear == tYear && currMonth == tMonth && Integer.toString(tDay).equals(days[i][j].getText().toString())) {
                                 days[i][j].setTextColor(Color.parseColor("#E9F91F"));
+                                if (isFirst) {
+                                    days[i][j].setBackgroundResource(R.mipmap.day_bg);
+                                    days[i][j].setTextColor(Color.parseColor("#79B856"));
+                                } else {
+                                    days[i][j].setBackgroundDrawable(null);
+                                }
                             }
                         }
 
@@ -148,6 +156,12 @@ public class CalendarView extends LinearLayout implements View.OnClickListener {
                             //设置今日时间颜色
                             if (currYear == tYear && currMonth == tMonth && Integer.toString(tDay).equals(days[i][j].getText().toString())) {
                                 days[i][j].setTextColor(Color.parseColor("#E9F91F"));
+                                if (isFirst) {
+                                    days[i][j].setBackgroundResource(R.mipmap.day_bg);
+                                    days[i][j].setTextColor(Color.parseColor("#79B856"));
+                                } else {
+                                    days[i][j].setBackgroundDrawable(null);
+                                }
                             }
                         }
 
@@ -238,7 +252,7 @@ public class CalendarView extends LinearLayout implements View.OnClickListener {
 
     //初始化头部布局
     private void initHeadView(Context context) {
-        //获取当前时间
+        //获取当前时间 记录当前年月日保存下来
         Date dt = new Date();
         SimpleDateFormat matter = new SimpleDateFormat("yyyy MM dd");
         if (currYear == 0)
@@ -344,6 +358,7 @@ public class CalendarView extends LinearLayout implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (listener != null && view.getTag() != null) {
+            isFirst = false;
             //将目标日期获取用于绘制背景
             String s = view.getTag().toString();
             aimYear = Integer.parseInt(s.split("-")[0]);

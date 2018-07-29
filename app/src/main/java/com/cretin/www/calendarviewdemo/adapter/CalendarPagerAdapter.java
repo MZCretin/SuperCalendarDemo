@@ -1,19 +1,14 @@
 package com.cretin.www.calendarviewdemo.adapter;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
-import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.cretin.www.calendarviewdemo.views.CalendarView;
-
 import java.util.LinkedList;
 import java.util.List;
 
 public class CalendarPagerAdapter extends PagerAdapter {
+
     //缓存上一次回收的MonthView
     private LinkedList<CalendarView> cache = new LinkedList<>();
 
