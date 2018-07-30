@@ -4,3 +4,5 @@
 效果如下
 
 <img src="./pic/result.gif"/>
+
+实现解析请移步简书：[【【需求解决系列之二】回款日历的实现】](https://www.jianshu.com/p/b7a8ddc639db)
