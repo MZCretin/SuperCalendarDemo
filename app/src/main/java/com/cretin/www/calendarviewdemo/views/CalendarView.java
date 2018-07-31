@@ -324,29 +324,29 @@ public class CalendarView extends LinearLayout implements View.OnClickListener {
 
     //获取指定年份指定月份的第一天的位置
     private int getDaysOfMonth(int year, int month) {
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, month - 1);
-        return cal.getActualMaximum(Calendar.DATE);
+        Calendar a = Calendar.getInstance();
+        a.set(Calendar.YEAR, year);
+        a.set(Calendar.MONTH, month - 1);
+        a.set(Calendar.DATE, 1);
+        a.roll(Calendar.DATE, -1);
+        int maxDate = a.get(Calendar.DATE);
+        return maxDate;
     }
 
     //获取指定年份指定月份的最后一天
     public int getLastDayOfMonth(int year, int month) {
-        month = month - 1;
+        month--;
         if (month == 0) {
             month = 12;
-            year = year - 1;
+            year--;
         }
-        month = month - 1;
-        if (month == 0) {
-            month = 12;
-            year = year - 1;
-        }
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, month);
-        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DATE));
-        return Integer.parseInt(new SimpleDateFormat("dd").format(cal.getTime()));
+        Calendar a = Calendar.getInstance();
+        a.set(Calendar.YEAR, year);
+        a.set(Calendar.MONTH, month - 1);
+        a.set(Calendar.DATE, 1);
+        a.roll(Calendar.DATE, -1);
+        int maxDate = a.get(Calendar.DATE);
+        return maxDate;
     }
 
     private float getScaleSize() {
