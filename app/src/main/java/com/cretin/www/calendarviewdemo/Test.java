@@ -11,5 +11,15 @@ import android.util.Log;
 public class Test {
     private void init() {
         Log.e("", "");
+        Log.e("", "");
+        Log.e("", "");
+        Log.e("", "");
+        Log.e("", "");
+        Log.e("", "");
+        Log.e("", "");
+        Log.e("", "");
+        Log.e("", "");
+        Log.e("", "");
+        Log.e("", "");
     }
 }
