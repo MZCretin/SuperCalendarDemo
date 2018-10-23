@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/CalendarViewDemo-master.iml" filepath="$PROJECT_DIR$/CalendarViewDemo-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/SuperCalendarDemo.iml" filepath="$PROJECT_DIR$/SuperCalendarDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testGIt.iml" filepath="$PROJECT_DIR$/testGIt.iml" />
     </modules>
   </component>
 </project>
