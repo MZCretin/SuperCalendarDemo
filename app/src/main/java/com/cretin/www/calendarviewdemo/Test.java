@@ -8,6 +8,6 @@ package com.cretin.www.calendarviewdemo;
  */
 public class Test {
     private void init() {
-        
+
     }
 }
