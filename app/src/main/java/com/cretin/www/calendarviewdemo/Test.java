@@ -7,4 +7,7 @@ package com.cretin.www.calendarviewdemo;
  * @desc: 添加描述
  */
 public class Test {
+    private void init() {
+        
+    }
 }
